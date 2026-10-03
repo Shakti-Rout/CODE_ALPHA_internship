@@ -1,0 +1,16 @@
+{% extends "shop/base.html" %}
+{% block title %}{{ product.name }} — FORM{% endblock %}
+{% block content %}
+<main class="wrap inner-page">
+    <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="{% url 'home' %}">Shop</a><span>/</span><span>{{ product.category }}</span></nav>
+    <section class="detail-layout">
+        <div class="detail-photo"><img src="{{ product.image_url }}" alt="{{ product.name }}"></div>
+        <div class="detail-copy"><p class="eyebrow">{{ product.category }} / FORM OBJECT</p><h1>{{ product.name }}</h1><p class="detail-price">${{ product.price }}</p><div class="detail-description">{{ product.description|linebreaks }}</div>
+            <p class="availability">{% if product.stock > 0 %}<span class="availability-dot"></span> In stock · {{ product.stock }} available{% else %}<span class="availability-dot unavailable"></span> Currently unavailable{% endif %}</p>
+            <form method="post" action="{% url 'add_to_cart' product.pk %}">{% csrf_token %}<input type="hidden" name="next" value="{{ request.path }}"><button class="button button-dark detail-add" type="submit" {% if product.stock < 1 %}disabled{% endif %}>Add to bag <span>↗</span></button></form>
+            <div class="detail-perks"><p><span>01</span> Considered materials, made to last.</p><p><span>02</span> Complimentary shipping on orders over $75.</p><p><span>03</span> Questions? We're happy to help.</p></div>
+        </div>
+    </section>
+    {% if related_products %}<section class="related-products"><div class="section-heading"><div><p class="eyebrow">Keep looking</p><h2>More from <em>{{ product.category }}.</em></h2></div></div><div class="product-grid">{% for item in related_products %}<article class="product-card"><a class="product-photo" href="{{ item.get_absolute_url }}"><img src="{{ item.image_url }}" alt="{{ item.name }}" loading="lazy"></a><div class="product-info"><div><p class="product-category">{{ item.category }}</p><h3><a href="{{ item.get_absolute_url }}">{{ item.name }}</a></h3></div><p class="product-price">${{ item.price }}</p></div></article>{% endfor %}</div></section>{% endif %}
+</main>
+{% endblock %}

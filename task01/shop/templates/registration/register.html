@@ -1,0 +1,5 @@
+{% extends "shop/base.html" %}
+{% block title %}Create an account — FORM{% endblock %}
+{% block content %}
+<main class="wrap inner-page auth-page"><section class="auth-panel"><p class="eyebrow">Make yourself at home</p><h1>Join the <em>good edit.</em></h1><form method="post" class="auth-form">{% csrf_token %}{% for field in form %}<label class="form-field">{{ field.label }}{{ field }}{% if field.help_text %}<small>{{ field.help_text|safe }}</small>{% endif %}{% for error in field.errors %}<small class="field-error">{{ error }}</small>{% endfor %}</label>{% endfor %}<button class="button button-dark full-button" type="submit">Create account <span>↗</span></button></form><p class="auth-switch">Already have an account? <a href="{% url 'login' %}">Sign in</a></p></section><div class="auth-aside register-art"><span>FORM / NOTE 02</span><p>Find a little<br><em>everyday joy.</em></p></div></main>
+{% endblock %}

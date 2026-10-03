@@ -1,0 +1,5 @@
+{% extends "shop/base.html" %}
+{% block title %}Order confirmed — FORM{% endblock %}
+{% block content %}
+<main class="wrap inner-page confirmation-page"><div class="confirmation-mark">✓</div><p class="eyebrow">Order #{{ order.pk }} · {{ order.created_at|date:"F j, Y" }}</p><h1>It's a good <em>choice.</em></h1><p class="confirmation-intro">Thanks, {{ order.full_name }}. Your order is in, and we'll take good care of it.</p><div class="confirmation-card"><div class="confirmation-head"><h2>Order details</h2><span class="status-pill">{{ order.get_status_display }}</span></div>{% for item in order.items.all %}<div class="checkout-item"><span>{{ item.quantity }} × {{ item.product_name }}</span><strong>${{ item.line_total }}</strong></div>{% endfor %}<div class="summary-total"><span>Total paid</span><strong>${{ order.total }}</strong></div><div class="delivery-address"><p class="eyebrow">Delivering to</p><p>{{ order.full_name }}<br>{{ order.address }}<br>{{ order.city }}, {{ order.postal_code }}<br>{{ order.email }}</p></div></div><a class="button button-dark" href="{% url 'home' %}">Back to the collection <span>↗</span></a></main>
+{% endblock %}

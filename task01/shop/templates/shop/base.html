@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f4f5ef">
+    <title>{% block title %}FORM — Objects for the everyday{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'shop/style.css' %}">
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+    <div class="announcement">A good day starts with the little things <span>✳</span> Free shipping over $75</div>
+    <header class="site-header wrap">
+        <a class="wordmark" href="{% url 'home' %}" aria-label="FORM home">FORM<span>.</span></a>
+        <nav class="main-nav" aria-label="Main navigation">
+            <a href="{% url 'home' %}#collection">Shop all</a>
+            <a href="{% url 'home' %}#collection">The good edit</a>
+        </nav>
+        <div class="header-actions">
+            {% if user.is_authenticated %}
+                <a class="account-link" href="{% url 'order_history' %}">My orders</a>
+                <form method="post" action="{% url 'logout' %}" class="logout-form">{% csrf_token %}<button class="account-link" type="submit">Log out</button></form>
+            {% else %}
+                <a class="account-link" href="{% url 'login' %}">Sign in</a>
+            {% endif %}
+            <a class="bag-link" href="{% url 'cart' %}">Bag <span>{{ cart_count }}</span></a>
+        </div>
+    </header>
+
+    {% if messages %}<div class="message-stack wrap" aria-live="polite">{% for message in messages %}<p class="site-message {{ message.tags }}">{{ message }}</p>{% endfor %}</div>{% endif %}
+    {% block content %}{% endblock %}
+
+    <footer class="site-footer">
+        <div class="footer-main wrap"><a class="wordmark footer-logo" href="{% url 'home' %}">FORM<span>.</span></a><p>Keep the good close.<br>Find a little joy in the everyday.</p><div class="footer-links"><a href="{% url 'home' %}#collection">Shop</a><a href="{% url 'cart' %}">Your bag</a><a href="{% url 'order_history' %}">Orders</a></div></div>
+        <div class="footer-bottom wrap"><span>© 2026 FORM SUPPLY CO.</span><span>Thoughtfully gathered, daily.</span><a href="https://www.codealpha.tech">CODEALPHA</a></div>
+    </footer>
+    <script src="{% static 'shop/ecommerce.js' %}" defer></script>
+</body>
+</html>

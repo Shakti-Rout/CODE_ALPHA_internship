@@ -1,0 +1,5 @@
+{% extends "shop/base.html" %}
+{% block title %}My orders — FORM{% endblock %}
+{% block content %}
+<main class="wrap inner-page history-page"><p class="eyebrow">Your FORM account</p><h1>Order history<span class="title-period">.</span></h1>{% if orders %}<div class="history-list">{% for order in orders %}<a class="history-order" href="{% url 'order_confirmation' order.pk %}"><div><p class="product-category">ORDER #{{ order.pk }} · {{ order.created_at|date:"M j, Y" }}</p><h2>{% for item in order.items.all %}{{ item.product_name }}{% if not forloop.last %}, {% endif %}{% endfor %}</h2></div><div class="history-total"><span class="status-pill">{{ order.get_status_display }}</span><strong>${{ order.total }}</strong><span aria-hidden="true">↗</span></div></a>{% endfor %}</div>{% else %}<div class="empty-bag"><span class="empty-symbol">✳</span><h2>Your next favorite is out there.</h2><p>Orders you place will show up here.</p><a class="button button-dark" href="{% url 'home' %}#collection">Explore the collection <span>↗</span></a></div>{% endif %}</main>
+{% endblock %}

@@ -1,0 +1,5 @@
+{% extends "shop/base.html" %}
+{% block title %}Sign in — FORM{% endblock %}
+{% block content %}
+<main class="wrap inner-page auth-page"><section class="auth-panel"><p class="eyebrow">Welcome back</p><h1>Good to see <em>you.</em></h1><form method="post" class="auth-form">{% csrf_token %}{% if form.non_field_errors %}<p class="form-error">{{ form.non_field_errors }}</p>{% endif %}<label class="form-field">Username<input name="username" autocomplete="username" required autofocus></label><label class="form-field">Password<input type="password" name="password" autocomplete="current-password" required></label><input type="hidden" name="next" value="{{ next }}"><button class="button button-dark full-button" type="submit">Sign in <span>↗</span></button></form><p class="auth-switch">New around here? <a href="{% url 'register' %}">Create an account</a></p></section><div class="auth-aside"><span>FORM / NOTE 01</span><p>Good things<br>feel like <em>you.</em></p></div></main>
+{% endblock %}
