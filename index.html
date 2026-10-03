@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f7f6f2">
+    <meta name="description" content="A calmer place for your team to make progress together.">
+    <title>Orbit — work, in good company</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <div id="toast-region" class="toast-region" aria-live="polite"></div>
+    <section id="auth-view" class="auth-layout">
+      <div class="auth-decoration">
+        <a class="brand brand-light" href="#"><span class="brand-mark"><span></span><span></span><span></span></span> orbit</a>
+        <div class="auth-art"><div class="orbit-ring orbit-ring-one"></div><div class="orbit-ring orbit-ring-two"></div><div class="orbit-orb"></div><div class="orbit-star star-one">✳</div><div class="orbit-star star-two">✦</div><div class="orbit-star star-three">✳</div><div class="orbit-label label-one">good ideas</div><div class="orbit-label label-two">in motion</div></div>
+        <div class="auth-quote"><span class="quote-mark">“</span><p>Big things happen<br>when we work together.</p><span class="quote-caption">A little more flow. A lot more done.</span></div>
+        <div class="auth-footer">Thoughtful work, together. <span>© 2026 Orbit</span></div>
+      </div>
+      <div class="auth-panel"><div class="auth-card">
+        <span class="eyebrow">YOUR TEAM'S HAPPY PLACE</span>
+        <h1 id="auth-heading">Good work<br><span>starts together.</span></h1>
+        <p class="auth-intro">Make space for the work that moves you forward.</p>
+        <div class="auth-tabs"><button class="auth-tab active" data-auth-mode="login">Sign in</button><button class="auth-tab" data-auth-mode="register">Create account</button></div>
+        <form id="auth-form">
+          <label id="name-field" class="field hidden">Your name<input name="name" autocomplete="name" placeholder="Jamie Parker" maxlength="50"></label>
+          <label class="field">Email address<input name="email" type="email" autocomplete="email" placeholder="you@company.com" required maxlength="254"></label>
+          <label class="field">Password<input name="password" type="password" autocomplete="current-password" placeholder="At least 8 characters" required minlength="8" maxlength="128"></label>
+          <button id="auth-submit" class="primary-button auth-submit" type="submit">Welcome back <span>→</span></button>
+          <p id="auth-error" class="form-error" role="alert"></p>
+        </form>
+        <p class="auth-terms">By continuing, you agree to keep the good work going.</p>
+      </div></div>
+    </section>
+
+    <div id="app-view" class="app-layout hidden">
+      <aside class="sidebar">
+        <a class="brand sidebar-brand" href="#"><span class="brand-mark"><span></span><span></span><span></span></span> orbit<span class="brand-period">.</span></a>
+        <div class="workspace-switcher"><span class="workspace-icon">S</span><span class="workspace-info"><strong>Studio North</strong><small>Free workspace</small></span><span class="switcher-chevron">⌄</span></div>
+        <div class="sidebar-section-label">WORKSPACE <button id="create-project-shortcut" class="icon-button tiny-add" aria-label="Create a project">+</button></div>
+        <nav id="project-list" class="project-list"></nav>
+        <div class="sidebar-bottom">
+          <div class="sidebar-note"><span class="note-spark">✳</span><strong>Made for momentum</strong><p>A little progress adds up to big things.</p></div>
+          <button id="profile-button" class="profile-button"><span id="profile-avatar" class="avatar avatar-profile">J</span><span class="profile-details"><strong id="profile-name">Jamie Parker</strong><small>Free plan</small></span><span class="profile-more">···</span></button>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div class="breadcrumbs"><span>Workspace</span><span class="breadcrumb-divider">/</span><strong id="breadcrumb-project">Good things ahead</strong></div>
+          <div class="topbar-actions"><span id="live-indicator" class="live-indicator"><span></span> Live</span><button id="create-project-top" class="invite-button new-project-button">＋ New project</button><button id="notification-button" class="icon-button notification-button" aria-label="Notifications"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span id="notification-dot" class="notification-dot hidden"></span></button><button id="invite-button" class="invite-button"><span>＋</span> Invite</button><button id="mobile-profile-button" class="icon-button avatar-profile mobile-profile-button" aria-label="Sign out">J</button></div>
+        </header>
+        <section class="board-page">
+          <div class="board-heading"><div><div id="project-eyebrow" class="project-eyebrow"><span></span> TEAM PROJECT</div><div class="heading-row"><h1 id="project-title">Good things ahead</h1></div><p id="project-description" class="project-description">A place for our next big thing.</p></div><div class="board-heading-aside"><div id="member-stack" class="member-stack" aria-label="Project members"></div><button id="project-invite-button" class="icon-button invite-plus" aria-label="Invite teammates">+</button></div></div>
+          <div class="board-toolbar"><div class="view-switch"><button class="view-tab active"><span>▦</span> Board</button><button class="view-tab" disabled><span>☷</span> List <span class="soon-tag">SOON</span></button></div><div class="board-controls"><label class="search-box"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.5" stroke="currentColor" stroke-width="1.7"/><path d="m16 16 4.1 4.1" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg><input id="task-search" type="search" placeholder="Find a task..." aria-label="Find a task"></label><button id="filter-button" class="filter-button"><span>☷</span> <span id="filter-label">Filter</span><span class="filter-chevron">⌄</span></button></div></div>
+          <div id="board" class="board" aria-label="Project board"></div>
+          <div class="board-footer"><div class="footer-avatars" id="footer-avatars"></div><span id="board-footer-text">Good things happen when we share the work.</span><span class="footer-dots">· &nbsp; · &nbsp; ·</span></div>
+        </section>
+      </main>
+      <div id="notification-popover" class="notification-popover hidden"></div>
+    </div>
+
+    <dialog id="project-dialog" class="modal-dialog"><form id="project-form" class="modal-card">
+      <button type="button" class="modal-close" data-close-dialog="project-dialog" aria-label="Close">×</button><span class="modal-kicker">START SOMETHING GOOD</span><h2>Create a project</h2><p>Bring your people and your next big idea together.</p>
+      <label class="field">Project name<input name="name" placeholder="e.g. Website refresh" maxlength="80" required></label>
+      <label class="field">A little context <span class="optional-label">OPTIONAL</span><textarea name="description" placeholder="What are you working on together?" rows="3" maxlength="500"></textarea></label>
+      <label class="field">Invite teammates <span class="optional-label">OPTIONAL</span><select name="memberIds" id="project-members" multiple size="3" aria-label="Choose project members"></select><small class="select-hint">Hold Ctrl (or ⌘) to select more than one.</small></label>
+      <p class="form-error" id="project-error" role="alert"></p><button class="primary-button" type="submit">Create project <span>→</span></button>
+    </form></dialog>
+
+    <dialog id="task-dialog" class="modal-dialog task-dialog"><form id="task-form" class="modal-card">
+      <button type="button" class="modal-close" data-close-dialog="task-dialog" aria-label="Close">×</button><span class="modal-kicker">MAKE IT HAPPEN</span><h2 id="task-dialog-title">Add a task</h2>
+      <label class="field">Task name<input name="title" placeholder="What needs doing?" maxlength="160" required></label>
+      <label class="field">Description <span class="optional-label">OPTIONAL</span><textarea name="description" placeholder="Add a few details..." rows="3" maxlength="2000"></textarea></label>
+      <div class="field-row"><label class="field">Status<select name="status"><option value="todo">To do</option><option value="inprogress">In progress</option><option value="done">Done</option></select></label><label class="field">Due date<input name="dueDate" type="date"></label></div>
+      <label class="field">Assign to <select name="assigneeId" id="task-assignee"><option value="">Unassigned</option></select></label>
+      <p class="form-error" id="task-error" role="alert"></p><div class="task-form-actions"><button id="delete-task-button" class="delete-button hidden" type="button">Delete task</button><button class="primary-button" type="submit"><span id="task-save-label">Add task</span><span>→</span></button></div>
+    </form>
+    <section id="comments-panel" class="comments-panel"><div class="comments-heading"><span>THE CONVERSATION</span><span id="comment-count">0</span></div><div id="comments-list" class="comments-list"></div><form id="comment-form" class="comment-form"><span id="comment-avatar" class="avatar comment-avatar">J</span><textarea name="text" aria-label="Add to the conversation" placeholder="Add to the conversation..." maxlength="2000" rows="2" required></textarea><button class="comment-send" type="submit" aria-label="Post comment">↑</button></form></section></dialog>
+
+    <dialog id="invite-dialog" class="modal-dialog"><form id="invite-form" class="modal-card">
+      <button type="button" class="modal-close" data-close-dialog="invite-dialog" aria-label="Close">×</button><span class="modal-kicker">BETTER, TOGETHER</span><h2>Bring someone in</h2><p>Invite a teammate to this project.</p><label class="field">Team member<select id="invite-member" name="memberId"></select></label><p class="form-error" id="invite-error" role="alert"></p><button class="primary-button" type="submit">Add to project <span>→</span></button>
+    </form></dialog>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/app.js"></script>
+  </body>
+</html>
