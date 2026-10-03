@@ -1,148 +1,90 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#101014">
-  <title>Gather — make space for good work</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css">
-</head>
-<body>
-  <main id="auth-screen" class="auth-shell">
-    <section class="auth-story">
-      <a class="brand" href="/" aria-label="Gather home">
-        <span class="brand-mark"><span></span><span></span><span></span><span></span></span>
-        <span>gather<span class="brand-period">.</span></span>
-      </a>
-      <div class="story-copy">
-        <span class="eyebrow"><span class="live-dot"></span> A little closer, wherever you are</span>
-        <h1>Good things<br>happen when<br>we <em>gather.</em></h1>
-        <p>Bring your people into the same room. Share ideas, make things together, and make distance feel a little smaller.</p>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f7f6f2">
+    <meta name="description" content="A calmer place for your team to make progress together.">
+    <title>Orbit — work, in good company</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <div id="toast-region" class="toast-region" aria-live="polite"></div>
+    <section id="auth-view" class="auth-layout">
+      <div class="auth-decoration">
+        <a class="brand brand-light" href="#"><span class="brand-mark"><span></span><span></span><span></span></span> orbit</a>
+        <div class="auth-art"><div class="orbit-ring orbit-ring-one"></div><div class="orbit-ring orbit-ring-two"></div><div class="orbit-orb"></div><div class="orbit-star star-one">✳</div><div class="orbit-star star-two">✦</div><div class="orbit-star star-three">✳</div><div class="orbit-label label-one">good ideas</div><div class="orbit-label label-two">in motion</div></div>
+        <div class="auth-quote"><span class="quote-mark">“</span><p>Big things happen<br>when we work together.</p><span class="quote-caption">A little more flow. A lot more done.</span></div>
+        <div class="auth-footer">Thoughtful work, together. <span>© 2026 Orbit</span></div>
       </div>
-      <div class="story-footer"><span class="avatars"><i>J</i><i>A</i><i>M</i><i>+</i></span><span>Made for the moments that matter.</span></div>
-      <div class="orb orb-one"></div><div class="orb orb-two"></div>
-    </section>
-    <section class="auth-panel">
-      <div class="auth-card">
-        <div class="auth-mobile-brand brand">
-          <span class="brand-mark"><span></span><span></span><span></span><span></span></span>
-          <span>gather<span class="brand-period">.</span></span>
-        </div>
-        <div class="auth-heading">
-          <span class="eyebrow muted-eyebrow">YOUR PEOPLE ARE HERE</span>
-          <h2 id="auth-title">Come on in.</h2>
-          <p id="auth-subtitle">Sign in to pick up where you left off.</p>
-        </div>
-        <div class="auth-tabs" role="tablist" aria-label="Account options">
-          <button class="auth-tab active" data-auth-mode="login" role="tab" aria-selected="true">Sign in</button>
-          <button class="auth-tab" data-auth-mode="register" role="tab" aria-selected="false">Create account</button>
-        </div>
+      <div class="auth-panel"><div class="auth-card">
+        <span class="eyebrow">YOUR TEAM'S HAPPY PLACE</span>
+        <h1 id="auth-heading">Good work<br><span>starts together.</span></h1>
+        <p class="auth-intro">Make space for the work that moves you forward.</p>
+        <div class="auth-tabs"><button class="auth-tab active" data-auth-mode="login">Sign in</button><button class="auth-tab" data-auth-mode="register">Create account</button></div>
         <form id="auth-form">
-          <label class="field-label hidden" id="name-field">Your name<input id="auth-name" autocomplete="name" maxlength="48" placeholder="How should we call you?"></label>
-          <label class="field-label">Email address<input id="auth-email" type="email" autocomplete="email" required placeholder="you@example.com"></label>
-          <label class="field-label">Password<input id="auth-password" type="password" autocomplete="current-password" required minlength="10" maxlength="128" placeholder="At least 10 characters"></label>
-          <div id="auth-error" class="form-error" role="alert" aria-live="polite"></div>
-          <button id="auth-submit" class="button button-primary auth-submit" type="submit">Sign in <span>→</span></button>
+          <label id="name-field" class="field hidden">Your name<input name="name" autocomplete="name" placeholder="Jamie Parker" maxlength="50"></label>
+          <label class="field">Email address<input name="email" type="email" autocomplete="email" placeholder="you@company.com" required maxlength="254"></label>
+          <label class="field">Password<input name="password" type="password" autocomplete="current-password" placeholder="At least 8 characters" required minlength="8" maxlength="128"></label>
+          <button id="auth-submit" class="primary-button auth-submit" type="submit">Welcome back <span>→</span></button>
+          <p id="auth-error" class="form-error" role="alert"></p>
         </form>
-        <div class="security-note"><span class="lock-icon">⌑</span> Your meetings are protected with end-to-end encryption.</div>
-        <p class="auth-legal">By continuing, you agree to keep things kind and your meetings yours.</p>
-      </div>
-      <div class="auth-panel-footer">A quieter kind of together.</div>
+        <p class="auth-terms">By continuing, you agree to keep the good work going.</p>
+      </div></div>
     </section>
-  </main>
 
-  <main id="app-screen" class="app-shell hidden">
-    <aside class="sidebar">
-      <a class="brand sidebar-brand" href="#" aria-label="Gather home"><span class="brand-mark"><span></span><span></span><span></span><span></span></span><span>gather<span class="brand-period">.</span></span></a>
-      <div class="workspace-label"><span class="workspace-avatar">S</span><span class="workspace-name"><b id="workspace-name">Your space</b><small>Personal workspace</small></span><span class="chevron">⌄</span></div>
-      <nav class="side-nav" aria-label="Main navigation">
-        <span class="nav-caption">WORKSPACE</span>
-        <a class="nav-link selected" href="#home"><span class="nav-icon">▦</span> Home</a>
-        <a class="nav-link" href="#meetings"><span class="nav-icon">◷</span> Recent meetings <span class="nav-count">0</span></a>
-        <div class="nav-divider"></div>
-        <span class="nav-caption">YOUR SPACE</span>
-        <a class="nav-link" href="#rooms"><span class="nav-icon">⌂</span> Meeting rooms</a>
-        <a class="nav-link" href="#saved"><span class="nav-icon">♧</span> Shared with you</a>
-      </nav>
-      <div class="sidebar-bottom">
-        <div class="encryption-card"><span class="encryption-symbol">✳</span><div><b>Private by design</b><span>All meetings are encrypted</span></div><span class="encryption-check">✓</span></div>
-        <button id="profile-button" class="profile-button"><span id="profile-avatar" class="profile-avatar">S</span><span class="profile-text"><b id="profile-name">Your name</b><small>Personal account</small></span><span class="profile-menu">···</span></button>
-        <button id="logout-button" class="logout-button">Sign out</button>
-      </div>
-    </aside>
-
-    <section class="home-content">
-      <header class="topbar"><div class="breadcrumb">Your space <span>/</span> <b>Home</b></div><div class="topbar-right"><span class="topbar-status"><i></i> All systems lovely</span><button class="help-button" aria-label="Help">?</button></div></header>
-      <div class="home-inner">
-        <section class="welcome-row"><div><div class="eyebrow muted-eyebrow" id="today-label">YOUR LITTLE CORNER OF THE INTERNET</div><h1>Hey, <span id="welcome-name">friend</span><span class="wave">✳</span></h1><p>What would you like to make happen today?</p></div><div class="welcome-sun" aria-hidden="true">✳</div></section>
-        <section class="meeting-hero">
-          <div class="hero-orbit orbit-a"></div><div class="hero-orbit orbit-b"></div>
-          <div class="hero-copy"><span class="hero-kicker"><i></i> YOUR NEXT GOOD CONVERSATION</span><h2>Better things<br>happen <em>together.</em></h2><p>Start a room for your next big idea, quick catch-up, or absolutely-anything-you-like.</p><button id="create-room" class="button button-light">Start a new room <span>↗</span></button></div>
-          <div class="hero-art" aria-hidden="true"><div class="art-card card-back"><span>✳</span></div><div class="art-card card-front"><span class="art-scribble">let's<br>make<br><em>something</em></span><span class="art-spark">✦</span><span class="art-sticker">together!</span></div><span class="art-star star-a">✳</span><span class="art-star star-b">✦</span><span class="art-sticker-small">good ideas<br>live here ↗</span></div>
-          <div class="hero-footnote"><span class="hero-footnote-dot"></span> A room for everyone, anywhere</div>
-        </section>
-        <section class="quick-section">
-          <div class="section-heading"><div><span class="eyebrow muted-eyebrow">PICK UP WHERE YOU LEFT OFF</span><h2>Jump right in</h2></div><span class="quiet-caption">Good things don't need a calendar invite.</span></div>
-          <div class="quick-grid">
-            <article class="quick-card create-card"><div class="quick-icon lilac-icon">✳</div><div class="quick-card-copy"><h3>Start a room</h3><p>Make a cozy little space for your crew.</p></div><button id="create-room-card" class="round-arrow" aria-label="Start a room">↗</button></article>
-            <article class="quick-card join-card"><div class="quick-icon peach-icon">↗</div><div class="quick-card-copy"><h3>Join your people</h3><p>Have an invite? Paste the link and come on in.</p></div><form id="join-form" class="join-form"><input id="room-input" aria-label="Meeting invite link or room code" placeholder="Paste an invite link…" autocomplete="off"><button class="round-arrow" type="submit" aria-label="Join room">→</button></form></article>
-          </div>
-          <div id="home-error" class="form-error" role="alert"></div>
-        </section>
-        <section class="bottom-note"><span>✳</span><p>Meet, make, and share the good stuff. <b>It's better when we gather.</b></p><span class="note-decoration">˚ ༘♡ ⋆｡˚</span></section>
-      </div>
-    </section>
-  </main>
-
-  <main id="meeting-screen" class="meeting-shell hidden">
-    <header class="meeting-topbar">
-      <a class="brand meeting-brand" href="#" aria-label="Gather home"><span class="brand-mark"><span></span><span></span><span></span><span></span></span><span>gather<span class="brand-period">.</span></span></a>
-      <div class="meeting-title"><span id="meeting-name">Little room</span><span class="meeting-live"><i></i> LIVE</span></div>
-      <div class="meeting-top-actions"><span class="encrypted-pill"><span>✳</span> End-to-end encrypted</span><button id="invite-button" class="button invite-button"><span>↗</span> Invite people</button><button id="leave-button" class="leave-button" aria-label="Leave room">×</button></div>
-    </header>
-    <section class="meeting-main">
-      <div class="call-area">
-        <div class="call-stage">
-          <div id="video-grid" class="video-grid">
-            <article id="local-tile" class="video-tile local-tile">
-              <video id="local-video" autoplay playsinline muted></video>
-              <div id="local-placeholder" class="video-placeholder"><span id="local-initial" class="person-initial">Y</span><span class="placeholder-spark">✳</span></div>
-              <span class="participant-name"><span class="you-dot"></span> You <span id="mic-status" class="mic-indicator">♪</span></span>
-            </article>
-            <div id="empty-call" class="empty-call"><span class="empty-spark">✳</span><h2>Your room is ready.</h2><p>Invite your favorite people and make something good.</p><button class="button button-light" id="empty-invite">Invite someone ↗</button></div>
-          </div>
-          <div class="stage-top"><span class="room-label"><span class="room-label-icon">◈</span> <span id="room-label-name">Little room</span></span><span class="call-duration"><i></i><span id="call-timer">00:00</span></span></div>
-          <div class="stage-bottom"><div class="connection-label"><span>✳</span> This moment is yours</div><div class="participant-count"><span>♧</span> <b id="participant-count">1</b> here</div></div>
+    <div id="app-view" class="app-layout hidden">
+      <aside class="sidebar">
+        <a class="brand sidebar-brand" href="#"><span class="brand-mark"><span></span><span></span><span></span></span> orbit<span class="brand-period">.</span></a>
+        <div class="workspace-switcher"><span class="workspace-icon">S</span><span class="workspace-info"><strong>Studio North</strong><small>Free workspace</small></span><span class="switcher-chevron">⌄</span></div>
+        <div class="sidebar-section-label">WORKSPACE <button id="create-project-shortcut" class="icon-button tiny-add" aria-label="Create a project">+</button></div>
+        <nav id="project-list" class="project-list"></nav>
+        <div class="sidebar-bottom">
+          <div class="sidebar-note"><span class="note-spark">✳</span><strong>Made for momentum</strong><p>A little progress adds up to big things.</p></div>
+          <button id="profile-button" class="profile-button"><span id="profile-avatar" class="avatar avatar-profile">J</span><span class="profile-details"><strong id="profile-name">Jamie Parker</strong><small>Free plan</small></span><span class="profile-more">···</span></button>
         </div>
-        <div class="call-controls">
-          <button id="mic-button" class="control-button active" aria-label="Mute microphone"><span>♬</span><small>Mute</small></button>
-          <button id="camera-button" class="control-button active" aria-label="Turn camera off"><span>▣</span><small>Stop video</small></button>
-          <button id="screen-button" class="control-button" aria-label="Share screen"><span>▤</span><small>Share screen</small></button>
-          <button id="board-button" class="control-button" aria-label="Open whiteboard"><span>✎</span><small>Whiteboard</small></button>
-          <button id="chat-button" class="control-button" aria-label="Open chat"><span>▱</span><small>Chat</small><i id="chat-dot" class="notification-dot hidden"></i></button>
-          <button id="leave-call" class="control-button leave-call"><span>↗</span><small>Leave</small></button>
-        </div>
-      </div>
-      <aside class="collab-panel">
-        <div class="panel-tabs"><button class="panel-tab active" data-panel="chat">Conversation <span id="chat-tab-count" class="tab-count hidden">0</span></button><button class="panel-tab" data-panel="people">People <span id="people-count" class="tab-count">1</span></button></div>
-        <section id="chat-panel" class="panel-view chat-panel">
-          <div id="panel-welcome" class="panel-welcome"><span class="panel-welcome-icon">✳</span><h3>Good conversations<br>start small.</h3><p>Say hello, share a thought, or drop something helpful.</p></div>
-          <div id="chat-messages" class="chat-messages" aria-live="polite"></div>
-          <form id="chat-form" class="chat-form"><input id="file-input" type="file" class="hidden" aria-label="Choose a file"><button id="attach-file" class="chat-attach" type="button" aria-label="Attach a file">＋</button><textarea id="chat-input" maxlength="2000" rows="1" placeholder="Say something nice…" aria-label="Write a message"></textarea><button type="submit" aria-label="Send message">↑</button><div class="chat-encryption-note">✳ Messages are encrypted for this room</div></form>
-        </section>
-        <section id="people-panel" class="panel-view people-panel hidden"><div class="people-heading"><span>HERE TOGETHER</span><b id="people-panel-count">1 person</b></div><div id="people-list" class="people-list"></div><button id="people-invite" class="people-invite">＋ Invite someone</button></section>
-        <div class="panel-bottom"><span>Room code</span><button id="copy-room-code" class="room-code-button"><span id="room-code-text">—</span><span>⧉</span></button></div>
       </aside>
-    </section>
-    <div id="board-modal" class="board-modal hidden" role="dialog" aria-modal="true" aria-labelledby="board-title">
-      <div class="board-window"><header class="board-header"><div><span class="eyebrow muted-eyebrow">MAKE A LITTLE MESS</span><h2 id="board-title">Room whiteboard <span>✳</span></h2></div><div class="board-tools"><label class="color-control" title="Pen color"><input id="pen-color" type="color" value="#8b72e7" aria-label="Pen color"><span>Color</span></label><button id="clear-board" class="board-clear">Clear board</button><button id="close-board" class="board-close" aria-label="Close whiteboard">×</button></div></header><div class="board-canvas-wrap"><canvas id="whiteboard"></canvas></div><footer class="board-footer"><span>✳ Draw something together. Your board is encrypted.</span><span>Everyone in the room can add to this board.</span></footer></div>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div class="breadcrumbs"><span>Workspace</span><span class="breadcrumb-divider">/</span><strong id="breadcrumb-project">Good things ahead</strong></div>
+          <div class="topbar-actions"><span id="live-indicator" class="live-indicator"><span></span> Live</span><button id="create-project-top" class="invite-button new-project-button">＋ New project</button><button id="notification-button" class="icon-button notification-button" aria-label="Notifications"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span id="notification-dot" class="notification-dot hidden"></span></button><button id="invite-button" class="invite-button"><span>＋</span> Invite</button><button id="mobile-profile-button" class="icon-button avatar-profile mobile-profile-button" aria-label="Sign out">J</button></div>
+        </header>
+        <section class="board-page">
+          <div class="board-heading"><div><div id="project-eyebrow" class="project-eyebrow"><span></span> TEAM PROJECT</div><div class="heading-row"><h1 id="project-title">Good things ahead</h1></div><p id="project-description" class="project-description">A place for our next big thing.</p></div><div class="board-heading-aside"><div id="member-stack" class="member-stack" aria-label="Project members"></div><button id="project-invite-button" class="icon-button invite-plus" aria-label="Invite teammates">+</button></div></div>
+          <div class="board-toolbar"><div class="view-switch"><button class="view-tab active"><span>▦</span> Board</button><button class="view-tab" disabled><span>☷</span> List <span class="soon-tag">SOON</span></button></div><div class="board-controls"><label class="search-box"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.5" stroke="currentColor" stroke-width="1.7"/><path d="m16 16 4.1 4.1" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg><input id="task-search" type="search" placeholder="Find a task..." aria-label="Find a task"></label><button id="filter-button" class="filter-button"><span>☷</span> <span id="filter-label">Filter</span><span class="filter-chevron">⌄</span></button></div></div>
+          <div id="board" class="board" aria-label="Project board"></div>
+          <div class="board-footer"><div class="footer-avatars" id="footer-avatars"></div><span id="board-footer-text">Good things happen when we share the work.</span><span class="footer-dots">· &nbsp; · &nbsp; ·</span></div>
+        </section>
+      </main>
+      <div id="notification-popover" class="notification-popover hidden"></div>
     </div>
-    <div id="toast" class="toast" role="status" aria-live="polite"></div>
-  </main>
-  <script src="/socket.io/socket.io.js" defer></script>
-  <script src="/app.js" defer></script>
-</body>
+
+    <dialog id="project-dialog" class="modal-dialog"><form id="project-form" class="modal-card">
+      <button type="button" class="modal-close" data-close-dialog="project-dialog" aria-label="Close">×</button><span class="modal-kicker">START SOMETHING GOOD</span><h2>Create a project</h2><p>Bring your people and your next big idea together.</p>
+      <label class="field">Project name<input name="name" placeholder="e.g. Website refresh" maxlength="80" required></label>
+      <label class="field">A little context <span class="optional-label">OPTIONAL</span><textarea name="description" placeholder="What are you working on together?" rows="3" maxlength="500"></textarea></label>
+      <label class="field">Invite teammates <span class="optional-label">OPTIONAL</span><select name="memberIds" id="project-members" multiple size="3" aria-label="Choose project members"></select><small class="select-hint">Hold Ctrl (or ⌘) to select more than one.</small></label>
+      <p class="form-error" id="project-error" role="alert"></p><button class="primary-button" type="submit">Create project <span>→</span></button>
+    </form></dialog>
+
+    <dialog id="task-dialog" class="modal-dialog task-dialog"><form id="task-form" class="modal-card">
+      <button type="button" class="modal-close" data-close-dialog="task-dialog" aria-label="Close">×</button><span class="modal-kicker">MAKE IT HAPPEN</span><h2 id="task-dialog-title">Add a task</h2>
+      <label class="field">Task name<input name="title" placeholder="What needs doing?" maxlength="160" required></label>
+      <label class="field">Description <span class="optional-label">OPTIONAL</span><textarea name="description" placeholder="Add a few details..." rows="3" maxlength="2000"></textarea></label>
+      <div class="field-row"><label class="field">Status<select name="status"><option value="todo">To do</option><option value="inprogress">In progress</option><option value="done">Done</option></select></label><label class="field">Due date<input name="dueDate" type="date"></label></div>
+      <label class="field">Assign to <select name="assigneeId" id="task-assignee"><option value="">Unassigned</option></select></label>
+      <p class="form-error" id="task-error" role="alert"></p><div class="task-form-actions"><button id="delete-task-button" class="delete-button hidden" type="button">Delete task</button><button class="primary-button" type="submit"><span id="task-save-label">Add task</span><span>→</span></button></div>
+    </form>
+    <section id="comments-panel" class="comments-panel"><div class="comments-heading"><span>THE CONVERSATION</span><span id="comment-count">0</span></div><div id="comments-list" class="comments-list"></div><form id="comment-form" class="comment-form"><span id="comment-avatar" class="avatar comment-avatar">J</span><textarea name="text" aria-label="Add to the conversation" placeholder="Add to the conversation..." maxlength="2000" rows="2" required></textarea><button class="comment-send" type="submit" aria-label="Post comment">↑</button></form></section></dialog>
+
+    <dialog id="invite-dialog" class="modal-dialog"><form id="invite-form" class="modal-card">
+      <button type="button" class="modal-close" data-close-dialog="invite-dialog" aria-label="Close">×</button><span class="modal-kicker">BETTER, TOGETHER</span><h2>Bring someone in</h2><p>Invite a teammate to this project.</p><label class="field">Team member<select id="invite-member" name="memberId"></select></label><p class="form-error" id="invite-error" role="alert"></p><button class="primary-button" type="submit">Add to project <span>→</span></button>
+    </form></dialog>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/app.js"></script>
+  </body>
 </html>
