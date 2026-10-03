@@ -1,25 +1,27 @@
-# Orbit Projects
+# Gather
 
-A small, full-stack team project board with accounts, task assignments, task conversations, notifications, and live updates.
+Gather is a browser-based meeting room for video calls, screen sharing, encrypted chat and file sharing, and a collaborative whiteboard.
 
 ## Run locally
 
-Requires Node.js 18 or newer.
+Requires Node.js 20 or newer.
 
 ```sh
 npm install
 npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000), create an account, and create a project. Create a second account in another browser or private window to try project invitations and live collaboration.
+Open [http://localhost:3100](http://localhost:3100), create an account, then start a room. To invite someone, share the full invite link; its encryption key is in the URL fragment and is never sent to the server. Room codes by themselves are not enough to decrypt room content. Set the `PORT` environment variable to use another port.
 
-Set `PORT` to change the listening port. Set `SESSION_SECRET` to a long, random value when deploying; otherwise the app creates and stores a local session secret. Set `NODE_ENV=production` when serving the app over HTTPS so session cookies are marked secure.
+Camera and microphone permissions work on `localhost` and on HTTPS sites. For multi-person calls to work across restrictive networks, add your TURN service to the `iceServers` list in [public/app.js](./public/app.js); this starter uses a public STUN server.
 
-App data and the generated development session secret are stored in `data/`. This JSON-backed store is intended for local use and small demonstrations; use a managed database and shared session secret for multi-instance production deployments.
+## Security and deployment
 
-## Included
+- Chat messages, file contents, and whiteboard strokes use AES-GCM in the browser. The room key is a random 256-bit secret carried in the invite link fragment.
+- WebRTC encrypts audio, video, and screen-share media using DTLS-SRTP. Signaling and encrypted collaboration payloads use Socket.IO.
+- Passwords are hashed with Node's scrypt. Authentication uses a signed, HTTP-only, SameSite cookie; account records are stored in `data/users.json`.
+- Serve the app behind HTTPS in production and set `NODE_ENV=production` and a persistent, randomly generated `SESSION_SECRET`. The secure session cookie is enabled in production mode. Back up and restrict access to the data directory.
+- The server relays signaling and opaque encrypted room content; it does not persist messages, files, or whiteboard data. Meeting membership and whiteboard history are kept in memory and disappear when the room empties or the server restarts.
+- Invite links grant access to their room and encryption key. Share them only with the intended participants.
 
-- Password-based registration and sign-in, with scrypt password hashes and signed, HTTP-only session cookies.
-- Shared project boards with project member invitations, assignees, due dates, search, filters, and drag-and-drop status changes.
-- Task comments, persisted notifications, and Socket.IO updates for shared task and project activity.
-- Responsive desktop and mobile layouts.
+This is a small self-hostable starter, not a substitute for an operational security review, managed identity provider, durable database, or production TURN deployment.
