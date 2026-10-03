@@ -1,0 +1,9 @@
+{% extends "network/base.html" %}
+{% block title %}Edit your profile · Commonroom{% endblock %}
+{% block content %}
+<div class="auth-wrap profile-edit-wrap"><a class="back-link" href="{% url 'profile' user.username %}">← Back to your profile</a><div class="auth-card card"><p class="eyebrow">MAKE IT YOURS</p><h1>A little about you<span class="period">.</span></h1><p class="auth-intro">Give people a sense of who they’re talking to.</p>
+  <form method="post" class="stacked-form">{% csrf_token %}
+    {% for field in form %}<div class="form-field"><label for="{{ field.id_for_label }}">{% if field.name == "bio" %}Your bio{% else %}Profile photo URL{% endif %}</label>{{ field }}{% if field.help_text %}<small>{{ field.help_text }}</small>{% endif %}{% for error in field.errors %}<small class="field-error">{{ error }}</small>{% endfor %}</div>{% endfor %}
+    <button class="button button-dark form-submit" type="submit">Save profile <span>↗</span></button>
+  </form></div></div>
+{% endblock %}

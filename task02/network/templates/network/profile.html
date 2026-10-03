@@ -1,0 +1,31 @@
+{% extends "network/base.html" %}
+{% block title %}@{{ profile_user.username }} · Commonroom{% endblock %}
+{% block content %}
+<div class="profile-layout">
+  <section class="profile-main">
+    <a class="back-link" href="{% url 'feed' %}">← Back to the room</a>
+    <div class="profile-cover"></div>
+    <div class="profile-card card">
+      <div class="profile-topline">
+        <div class="avatar profile-avatar">{% if profile_user.profile.avatar_url %}<img src="{{ profile_user.profile.avatar_url }}" alt="">{% else %}{{ profile_user.username|slice:":1"|upper }}{% endif %}</div>
+        {% if user == profile_user %}<a class="button button-outline" href="{% url 'edit_profile' %}">Edit profile</a>{% elif user.is_authenticated %}<form method="post" action="{% url 'toggle_follow' profile_user.username %}">{% csrf_token %}<input type="hidden" name="next" value="{{ request.get_full_path }}"><button class="button {% if is_following %}button-outline{% else %}button-dark{% endif %}" type="submit">{% if is_following %}Following ✓{% else %}Follow <span>＋</span>{% endif %}</button></form>{% else %}<a class="button button-dark" href="{% url 'login' %}">Follow <span>＋</span></a>{% endif %}
+      </div>
+      <h1>{{ profile_user.get_full_name|default:profile_user.username }}</h1><p class="profile-handle">@{{ profile_user.username }}</p>
+      {% if profile_user.profile.bio %}<p class="profile-bio">{{ profile_user.profile.bio }}</p>{% else %}<p class="profile-bio muted">Still finding the words. Say hello instead.</p>{% endif %}
+      <div class="profile-stats"><span><strong>{{ post_count }}</strong> posts</span><span><strong>{{ follower_count }}</strong> followers</span><span><strong>{{ following_count }}</strong> following</span></div>
+    </div>
+    <div class="profile-post-heading"><p class="eyebrow">ON THE RECORD</p><h2>{{ profile_user.username }}’s thoughts</h2></div>
+    {% for post in posts %}
+      <article class="post-card card">
+        <div class="post-head"><a class="avatar" href="{% url 'profile' profile_user.username %}">{{ profile_user.username|slice:":1"|upper }}</a><div class="author-meta"><a href="{% url 'profile' profile_user.username %}" class="author-name">{{ profile_user.get_full_name|default:profile_user.username }}</a><span>@{{ profile_user.username }} <i>·</i> {{ post.created_at|timesince }} ago</span></div></div>
+        <div class="post-copy">{{ post.body|linebreaksbr }}</div>
+        {% if post.image_url %}<img class="post-image" src="{{ post.image_url }}" alt="Image shared by @{{ profile_user.username }}" loading="lazy">{% endif %}
+        <div class="post-actions"><form method="post" action="{% url 'toggle_like' post.id %}">{% csrf_token %}<input type="hidden" name="next" value="{{ request.get_full_path }}"><button class="action-button {% if post.liked_by_viewer %}liked{% endif %}" type="submit"><span>{% if post.liked_by_viewer %}♥{% else %}♡{% endif %}</span> {{ post.like_count }}</button></form><button class="action-button comment-toggle" type="button" aria-expanded="false"><span>◌</span> {{ post.comment_count }} replies</button></div>
+        <div class="comments-panel">{% for comment in post.comments.all %}<div class="comment-row"><a class="avatar avatar-tiny" href="{% url 'profile' comment.author.username %}">{{ comment.author.username|slice:":1"|upper }}</a><p><a href="{% url 'profile' comment.author.username %}">@{{ comment.author.username }}</a> {{ comment.body }}</p></div>{% empty %}<p class="no-comments">No replies yet. Start the conversation.</p>{% endfor %}
+          {% if user.is_authenticated %}<form class="comment-form" method="post" action="{% url 'add_comment' post.id %}">{% csrf_token %}<input type="hidden" name="next" value="{{ request.get_full_path }}"><input name="body" maxlength="500" placeholder="Add a thoughtful reply…" required><button type="submit" aria-label="Send reply">↗</button></form>{% else %}<p class="login-to-reply"><a href="{% url 'login' %}">Log in</a> to join the conversation.</p>{% endif %}
+        </div>
+      </article>
+    {% empty %}<div class="empty-state card"><span>✳</span><h2>Nothing on the record yet.</h2><p>When {{ profile_user.username }} shares a thought, you’ll find it here.</p></div>{% endfor %}
+  </section>
+</div>
+{% endblock %}

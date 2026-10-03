@@ -1,0 +1,35 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f6f2">
+  <title>{% block title %}Commonroom{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'network/styles.css' %}">
+  <script src="{% static 'network/app.js' %}" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="{% url 'feed' %}" aria-label="Commonroom home"><span class="brand-mark">c</span><span>commonroom</span></a>
+    <form class="search-box" action="{% url 'feed' %}" method="get">
+      <span aria-hidden="true">⌕</span><input name="q" value="{{ search_query }}" placeholder="Find your people" aria-label="Search the community">
+    </form>
+    <nav class="top-actions" aria-label="Account">
+      {% if user.is_authenticated %}
+        <a class="button button-quiet desktop-link" href="{% url 'profile' user.username %}">My profile</a>
+        <form action="{% url 'logout' %}" method="post">{% csrf_token %}<button class="button button-quiet" type="submit">Log out</button></form>
+        <a class="avatar avatar-small" href="{% url 'profile' user.username %}">{{ user.username|slice:":1"|upper }}</a>
+      {% else %}
+        <a class="button button-quiet" href="{% url 'login' %}">Log in</a><a class="button button-dark" href="{% url 'signup' %}">Join the room <span>↗</span></a>
+      {% endif %}
+    </nav>
+  </header>
+  {% if messages %}<div class="message-stack">{% for message in messages %}<div class="toast toast-{{ message.tags }}">{{ message }}</div>{% endfor %}</div>{% endif %}
+  <main class="page-shell">{% block content %}{% endblock %}</main>
+  <footer class="site-footer"><span>Made for the moments in between.</span><span>© {% now "Y" %} Commonroom</span></footer>
+</body>
+</html>

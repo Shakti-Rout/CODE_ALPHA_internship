@@ -1,0 +1,13 @@
+{% extends "network/base.html" %}
+{% block title %}Find your people · Commonroom{% endblock %}
+{% block content %}
+<div class="auth-wrap"><div class="auth-art"><span class="auth-spark">✳</span><p class="eyebrow">A PLACE TO LAND</p><h2>Come as<br>you are<span class="period">.</span></h2><p>Good conversations. Familiar faces. Room to just be.</p><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div></div>
+  <div class="auth-card card"><p class="eyebrow">YOUR PEOPLE ARE HERE</p><h1>Pull up a chair<span class="period">.</span></h1><p class="auth-intro">Create an account and make yourself at home.</p>
+    <form method="post" class="stacked-form">{% csrf_token %}
+      {% for field in form %}<div class="form-field"><label for="{{ field.id_for_label }}">{{ field.label }}</label>{{ field }}{% if field.help_text %}<small>{{ field.help_text|safe }}</small>{% endif %}{% for error in field.errors %}<small class="field-error">{{ error }}</small>{% endfor %}</div>{% endfor %}
+      {% if form.non_field_errors %}<div class="field-error">{{ form.non_field_errors }}</div>{% endif %}
+      <button class="button button-dark form-submit" type="submit">Create your account <span>↗</span></button>
+    </form><p class="auth-switch">Already part of the room? <a href="{% url 'login' %}">Log in</a></p>
+  </div>
+</div>
+{% endblock %}
